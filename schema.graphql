@@ -1,0 +1,6 @@
+type BinanceBunk @entity {
+  id: ID!
+  punkIndex: BigInt! # uint256
+  punkHolder: Bytes! # address
+  isBurned: Boolean! # boolean
+}
