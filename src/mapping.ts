@@ -10,7 +10,7 @@ import { BinanceBunk } from '../generated/schema';
 
 let addressZero = Address.fromString(
   '0x0000000000000000000000000000000000000000'
-);
+).toHex();
 
 export function handleAssign(event: Assign): void {
   log.warning('Assign Punk ID {} to {}', [
@@ -41,21 +41,20 @@ export function handlePunkTransfer(event: PunkTransfer): void {
   entity.punkIndex = event.params.punkIndex;
   entity.punkHolder = event.params.to;
 
-  if (
-    event.params.to.toHex() ==
-    Address.fromString('0x0000000000000000000000000000000000000000').toHex()
-  ) {
+  if (event.params.to.toHex() == addressZero) {
     entity.isBurned = true;
+    entity.burnedAt = event.block.timestamp.toString();
     entity.punkHolder = event.params.from;
   } else {
     entity.isBurned = false;
+    entity.burnedAt = null;
   }
 
   entity.save();
 }
 
 export function handlePunkBought(event: PunkBought): void {
-  log.warning('Buy Punk ID {} from {}', [
+  log.warning('Buy Punk ID {} from {} to {}', [
     event.params.punkIndex.toString(),
     event.params.fromAddress.toHex(),
     event.params.toAddress.toHex(),
@@ -70,14 +69,13 @@ export function handlePunkBought(event: PunkBought): void {
   entity.punkIndex = event.params.punkIndex;
   entity.punkHolder = event.params.toAddress;
 
-  if (
-    event.params.toAddress.toHex() ==
-    Address.fromString('0x0000000000000000000000000000000000000000').toHex()
-  ) {
+  if (event.params.toAddress.toHex() == addressZero) {
     entity.isBurned = true;
+    entity.burnedAt = event.block.timestamp.toString();
     entity.punkHolder = event.params.fromAddress;
   } else {
     entity.isBurned = false;
+    entity.burnedAt = null;
   }
 
   entity.save();

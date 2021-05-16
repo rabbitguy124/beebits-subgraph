@@ -68,4 +68,21 @@ export class BinanceBunk extends Entity {
   set isBurned(value: boolean) {
     this.set("isBurned", Value.fromBoolean(value));
   }
+
+  get burnedAt(): string | null {
+    let value = this.get("burnedAt");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set burnedAt(value: string | null) {
+    if (value === null) {
+      this.unset("burnedAt");
+    } else {
+      this.set("burnedAt", Value.fromString(value as string));
+    }
+  }
 }

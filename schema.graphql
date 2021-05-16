@@ -3,4 +3,5 @@ type BinanceBunk @entity {
   punkIndex: BigInt! # uint256
   punkHolder: Bytes! # address
   isBurned: Boolean! # boolean
+  burnedAt: String
 }
