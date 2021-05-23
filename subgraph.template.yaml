@@ -3,12 +3,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: BinanceBunkMarket
-    network: bsc
+    name: { { contractName } }
+    network: { { network } }
     source:
-      address: '0x5EA899dBc8d3CDE806142a955806e06759B05fB8'
-      abi: BinanceBunkMarket
-      startBlock: 5081936
+      address: '{{address}}'
+      abi: { { contractName } }
+      startBlock: { { startBlock } }
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -18,8 +18,8 @@ dataSources:
         - PunkTransfer
         - PunkBought
       abis:
-        - name: BinanceBunkMarket
-          file: ./abis/BinanceBunkMarket.json
+        - name: { { contractName } }
+          file: ./abis/{{contractName}}.json
       eventHandlers:
         - event: Assign(indexed address,uint256)
           handler: handleAssign

@@ -1,16 +1,17 @@
 {
-  "name": "bunks-holders",
+  "name": "beebits-subgraph",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ sunguru98/bunks-holders",
-    "create-local": "graph create --node http://localhost:8020/ sunguru98/bunks-holders",
-    "remove-local": "graph remove --node http://localhost:8020/ sunguru98/bunks-holders",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sunguru98/bunks-holders"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ rabbitguy124/beebits-subgraph",
+    "create-local": "graph create --node http://localhost:8020/ rabbitguy124/beebits-subgraph",
+    "remove-local": "graph remove --node http://localhost:8020/ rabbitguy124/beebits-subgraph",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 rabbitguy124/beebits-subgraph"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.20.0",
-    "@graphprotocol/graph-ts": "0.20.0"
+    "@graphprotocol/graph-ts": "0.20.0",
+    "mustache": "^4.2.0"
   }
 }
