@@ -2,5 +2,7 @@
   "network": "chapel",
   "contractName": "BinancePunksMarket",
   "address": "0x8A94C756ED416d629d8bf5C21a04411EA699b545",
-  "startBlock": 9093135
+  "startBlock": 9093135,
+  "beebitsAddress": "0x771184B2d468A78b86cC0E09E802F72F040A8Fb4",
+  "beebitsStartBlock": 9131613
 }

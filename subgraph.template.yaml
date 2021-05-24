@@ -3,12 +3,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: { { contractName } }
-    network: { { network } }
+    name: {{contractName}}
+    network: {{network}}
     source:
       address: '{{address}}'
-      abi: { { contractName } }
-      startBlock: { { startBlock } }
+      abi: BinancePunksMarket
+      startBlock: {{startBlock}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -18,8 +18,8 @@ dataSources:
         - PunkTransfer
         - PunkBought
       abis:
-        - name: { { contractName } }
-          file: ./abis/{{contractName}}.json
+        - name: BinancePunksMarket
+          file: ./abis/BinancePunksMarket.json
       eventHandlers:
         - event: Assign(indexed address,uint256)
           handler: handleAssign
@@ -27,4 +27,36 @@ dataSources:
           handler: handlePunkTransfer
         - event: PunkBought(indexed uint256,uint256,indexed address,indexed address)
           handler: handlePunkBought
-      file: ./src/mapping.ts
+      file: ./src/bunks.ts
+  - kind: ethereum/contract
+    name: Beebits
+    network: {{network}}
+    source:
+      address: '{{beebitsAddress}}'
+      abi: Beebits
+      startBlock: {{beebitsStartBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Assign
+        - PunkTransfer
+        - PunkBought
+      abis:
+        - name: Beebits
+          file: ./abis/Beebits.json
+      eventHandlers:
+        - event: Mint(indexed uint256,indexed address,uint256)
+          handler: handleBeebitMint
+        - event: BeebitBought(uint256,uint256,address,address,bool)
+          handler: handleBeebitBought
+        - event: BeebitListed(uint256,uint256,address,address)
+          handler: handleBeebitListing
+        - event: BeebitDelisted(uint256)
+          handler: handleBeebitDeListing
+        - event: BeebitBidPlaced(uint256,uint256,address)
+          handler: handleBeebitBid
+        - event: BeebitBidWithdrawn(uint256,uint256,address)
+          handler: handleBeebitBidWithdraw
+      file: ./src/beebits.ts

@@ -14,7 +14,7 @@
     "name": "punksOfferedForSale",
     "outputs": [
       { "name": "isForSale", "type": "bool" },
-      { "name": "punkIndex", "type": "uint256" },
+      { "name": "bunkIndex", "type": "uint256" },
       { "name": "seller", "type": "address" },
       { "name": "minValue", "type": "uint256" },
       { "name": "onlySellTo", "type": "address" }
@@ -25,7 +25,7 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "punkIndex", "type": "uint256" }],
+    "inputs": [{ "name": "bunkIndex", "type": "uint256" }],
     "name": "enterBidForPunk",
     "outputs": [],
     "payable": true,
@@ -53,7 +53,7 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "punkIndex", "type": "uint256" },
+      { "name": "bunkIndex", "type": "uint256" },
       { "name": "minPrice", "type": "uint256" }
     ],
     "name": "acceptBidForPunk",
@@ -104,7 +104,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "nextPunkIndexToAssign",
+    "name": "nextbunkIndexToAssign",
     "outputs": [{ "name": "", "type": "uint256" }],
     "payable": false,
     "stateMutability": "view",
@@ -113,7 +113,7 @@
   {
     "constant": true,
     "inputs": [{ "name": "", "type": "uint256" }],
-    "name": "punkIndexToAddress",
+    "name": "bunkIndexToAddress",
     "outputs": [{ "name": "", "type": "address" }],
     "payable": false,
     "stateMutability": "view",
@@ -134,7 +134,7 @@
     "name": "punkBids",
     "outputs": [
       { "name": "hasBid", "type": "bool" },
-      { "name": "punkIndex", "type": "uint256" },
+      { "name": "bunkIndex", "type": "uint256" },
       { "name": "bidder", "type": "address" },
       { "name": "value", "type": "uint256" }
     ],
@@ -171,7 +171,7 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "punkIndex", "type": "uint256" }],
+    "inputs": [{ "name": "bunkIndex", "type": "uint256" }],
     "name": "buyPunk",
     "outputs": [],
     "payable": true,
@@ -182,7 +182,7 @@
     "constant": false,
     "inputs": [
       { "name": "to", "type": "address" },
-      { "name": "punkIndex", "type": "uint256" }
+      { "name": "bunkIndex", "type": "uint256" }
     ],
     "name": "transferPunk",
     "outputs": [],
@@ -210,7 +210,7 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "punkIndex", "type": "uint256" }],
+    "inputs": [{ "name": "bunkIndex", "type": "uint256" }],
     "name": "withdrawBidForPunk",
     "outputs": [],
     "payable": false,
@@ -221,7 +221,7 @@
     "constant": false,
     "inputs": [
       { "name": "to", "type": "address" },
-      { "name": "punkIndex", "type": "uint256" }
+      { "name": "bunkIndex", "type": "uint256" }
     ],
     "name": "setInitialOwner",
     "outputs": [],
@@ -241,7 +241,7 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "punkIndex", "type": "uint256" },
+      { "name": "bunkIndex", "type": "uint256" },
       { "name": "minSalePriceInWei", "type": "uint256" },
       { "name": "toAddress", "type": "address" }
     ],
@@ -263,7 +263,7 @@
   {
     "constant": false,
     "inputs": [
-      { "name": "punkIndex", "type": "uint256" },
+      { "name": "bunkIndex", "type": "uint256" },
       { "name": "minSalePriceInWei", "type": "uint256" }
     ],
     "name": "offerPunkForSale",
@@ -283,7 +283,7 @@
   },
   {
     "constant": false,
-    "inputs": [{ "name": "punkIndex", "type": "uint256" }],
+    "inputs": [{ "name": "bunkIndex", "type": "uint256" }],
     "name": "punkNoLongerForSale",
     "outputs": [],
     "payable": false,
@@ -300,7 +300,7 @@
     "anonymous": false,
     "inputs": [
       { "indexed": true, "name": "to", "type": "address" },
-      { "indexed": false, "name": "punkIndex", "type": "uint256" }
+      { "indexed": false, "name": "bunkIndex", "type": "uint256" }
     ],
     "name": "Assign",
     "type": "event"
@@ -320,7 +320,7 @@
     "inputs": [
       { "indexed": true, "name": "from", "type": "address" },
       { "indexed": true, "name": "to", "type": "address" },
-      { "indexed": false, "name": "punkIndex", "type": "uint256" }
+      { "indexed": false, "name": "bunkIndex", "type": "uint256" }
     ],
     "name": "PunkTransfer",
     "type": "event"
@@ -328,7 +328,7 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "name": "punkIndex", "type": "uint256" },
+      { "indexed": true, "name": "bunkIndex", "type": "uint256" },
       { "indexed": false, "name": "minValue", "type": "uint256" },
       { "indexed": true, "name": "toAddress", "type": "address" }
     ],
@@ -338,7 +338,7 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "name": "punkIndex", "type": "uint256" },
+      { "indexed": true, "name": "bunkIndex", "type": "uint256" },
       { "indexed": false, "name": "value", "type": "uint256" },
       { "indexed": true, "name": "fromAddress", "type": "address" }
     ],
@@ -348,7 +348,7 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "name": "punkIndex", "type": "uint256" },
+      { "indexed": true, "name": "bunkIndex", "type": "uint256" },
       { "indexed": false, "name": "value", "type": "uint256" },
       { "indexed": true, "name": "fromAddress", "type": "address" }
     ],
@@ -358,7 +358,7 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "name": "punkIndex", "type": "uint256" },
+      { "indexed": true, "name": "bunkIndex", "type": "uint256" },
       { "indexed": false, "name": "value", "type": "uint256" },
       { "indexed": true, "name": "fromAddress", "type": "address" },
       { "indexed": true, "name": "toAddress", "type": "address" }
@@ -368,7 +368,7 @@
   },
   {
     "anonymous": false,
-    "inputs": [{ "indexed": true, "name": "punkIndex", "type": "uint256" }],
+    "inputs": [{ "indexed": true, "name": "bunkIndex", "type": "uint256" }],
     "name": "PunkNoLongerForSale",
     "type": "event"
   }

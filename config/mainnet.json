@@ -2,5 +2,7 @@
   "network": "bsc",
   "contractName": "BinanceBunkMarket",
   "address": "0x5EA899dBc8d3CDE806142a955806e06759B05fB8",
-  "startBlock": 5081936
+  "startBlock": 5081936,
+  "beebitsAddress": "",
+  "beebitsStartBlock": 0
 }

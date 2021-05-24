@@ -1,7 +1,45 @@
 type BinanceBunk @entity {
   id: ID!
-  punkIndex: BigInt! # uint256
-  punkHolder: Bytes! # address
+  bunkIndex: BigInt! # uint256
+  bunkHolder: Bytes! # address
   isBurned: Boolean! # boolean
   burnedAt: String
+  isBeebitClaimed: Boolean!
+}
+
+type TransactionHistory @entity {
+  id: ID!
+  txHash: Bytes!
+  from: Bytes!
+  to: Bytes!
+  claimedAt: BigInt!
+}
+
+type Beebit @entity {
+  id: ID!
+  holder: Bytes! # address
+  tokenId: BigInt!
+  bunkIndex: BigInt
+  transactionHistory: [TransactionHistory!]!
+  mintedAt: BigInt!
+  metadata: String!
+}
+
+type Bid @entity {
+  id: ID!
+  bidder: Bytes!
+  beebit: Beebit
+  listing: Listing
+  isBidding: Boolean!
+  bidValue: BigInt!
+}
+
+type Listing @entity {
+  id: ID!
+  seller: Bytes!
+  beebit: Beebit!
+  createdAt: BigInt!
+  sellingPrice: BigInt!
+  isSelling: Boolean!
+  bid: Bid @derivedFrom(field: "listing")
 }

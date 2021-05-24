@@ -4,10 +4,13 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ rabbitguy124/beebits-subgraph",
+    "deploy:test": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ rabbitguy124/beebits-subgraph",
+    "deploy:main": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ rabbitguy124/beebits-subgraph-main",
     "create-local": "graph create --node http://localhost:8020/ rabbitguy124/beebits-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ rabbitguy124/beebits-subgraph",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 rabbitguy124/beebits-subgraph"
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 rabbitguy124/beebits-subgraph",
+    "prepare:main": "mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:test": "mustache config/testnet.json subgraph.template.yaml > subgraph.yaml"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.20.0",

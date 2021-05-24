@@ -19,9 +19,10 @@ export function handleAssign(event: Assign): void {
   ]);
 
   let entity = new BinanceBunk(event.params.punkIndex.toString());
-  entity.punkIndex = event.params.punkIndex;
-  entity.punkHolder = event.params.to;
+  entity.bunkIndex = event.params.punkIndex;
+  entity.bunkHolder = event.params.to;
   entity.isBurned = false;
+  entity.isBeebitClaimed = false;
   entity.save();
 }
 
@@ -38,13 +39,13 @@ export function handlePunkTransfer(event: PunkTransfer): void {
     entity = new BinanceBunk(event.params.punkIndex.toString());
   }
 
-  entity.punkIndex = event.params.punkIndex;
-  entity.punkHolder = event.params.to;
+  entity.bunkIndex = event.params.punkIndex;
+  entity.bunkHolder = event.params.to;
 
   if (event.params.to.toHex() == addressZero) {
     entity.isBurned = true;
     entity.burnedAt = event.block.timestamp.toString();
-    entity.punkHolder = event.params.from;
+    entity.bunkHolder = event.params.from;
   } else {
     entity.isBurned = false;
     entity.burnedAt = null;
@@ -66,13 +67,13 @@ export function handlePunkBought(event: PunkBought): void {
     entity = new BinanceBunk(event.params.punkIndex.toString());
   }
 
-  entity.punkIndex = event.params.punkIndex;
-  entity.punkHolder = event.params.toAddress;
+  entity.bunkIndex = event.params.punkIndex;
+  entity.bunkHolder = event.params.toAddress;
 
   if (event.params.toAddress.toHex() == addressZero) {
     entity.isBurned = true;
     entity.burnedAt = event.block.timestamp.toString();
-    entity.punkHolder = event.params.fromAddress;
+    entity.bunkHolder = event.params.fromAddress;
   } else {
     entity.isBurned = false;
     entity.burnedAt = null;
